@@ -30,16 +30,17 @@ SearchResult binarySearch(const std::vector<int>& data, int key) {
 
     while (left <= right) {
         int mid = left + (right - left) / 2;
+        int midValue = data[mid];
 
+        // Count one inspected middle element per iteration.
         result.comparisons++;
-        if (data[mid] == key) {
+        if (midValue == key) {
             result.found = true;
             result.index = mid;
             return result;
         }
 
-        result.comparisons++;
-        if (data[mid] < key) {
+        if (midValue < key) {
             left = mid + 1;
         } else {
             right = mid - 1;
